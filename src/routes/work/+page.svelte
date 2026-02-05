@@ -58,9 +58,9 @@
 			description:
 				'A news reading mobile application that allows users to read from many different news sources in a clean and user-friendly interface.',
 			technologies: ['Swift', 'GoLang', 'GraphQL', 'PostgreSQL'],
-			imageUrl: '/images/veritas.png',
+			imageUrl: '/images/veritas.jpg',
 			liveUrl: 'https://veritas-eight-bice.vercel.app',
-			githubUrl: 'github.com/CutieCat6778/veritas',
+			githubUrl: 'github.com/thinisde/veritas',
 			featured: true
 		},
 		{
@@ -69,7 +69,7 @@
 				'A discord chatbot that uses machine learning to answer questions and engage in conversations with users.',
 			technologies: ['Python', 'DialogFlow', 'Discord API'],
 			liveUrl: 'https://www.youtube.com/watch?v=GHLsw4Dsf0o',
-			githubUrl: 'https://github.com/CutieCat6778/talky-bot',
+			githubUrl: 'https://github.com/thinisde/talky-bot',
 			imageUrl: '/images/talky.png',
 			featured: true
 		}

@@ -56,12 +56,12 @@
 					</div>
 					<h3 class="mb-1 font-semibold">GitHub</h3>
 					<a
-						href="https://github.com/CutieCat6778"
+						href="https://github.com/thinisde"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-primary-600 hover:underline dark:text-primary-400"
 					>
-						github.com/CutieCat6778
+						github.com/thinisde
 					</a>
 				</div>
 

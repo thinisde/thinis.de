@@ -108,7 +108,7 @@
 				</p>
 				<div class="flex gap-6">
 					<a
-						href="https://github.com/CutieCat6778"
+						href="https://github.com/thinisde"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-surface-600 transition-colors hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100"
