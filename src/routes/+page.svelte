@@ -2,50 +2,40 @@
 	<title>Thinh Nguyen - Portfolio</title>
 </svelte:head>
 
-<section class="px-6 py-20 md:py-32">
-	<div class="mx-auto max-w-4xl text-center">
-		<h1 class="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
-			Hi, I'm <span class="text-primary-600 dark:text-primary-400">Thinh Nguyen</span>
+<section class="spectral-hero px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+	<div class="page-intro page-intro--center motion-sequence mx-auto max-w-4xl">
+		<p class="eyebrow-badge">Bold code for web, hardware, and visual experiments</p>
+		<h1 class="page-title">
+			Hi, I'm <span class="font-semibold">Thinh Nguyen</span>
 		</h1>
-		<p class="mb-8 text-xl text-surface-600 md:text-2xl dark:text-surface-400">
+		<p class="meta-copy text-sm tracking-[0.22em] sm:text-base">
 			A Full-Stack & Embedded Developer
 		</p>
-		<p class="mx-auto mb-10 max-w-2xl text-lg text-surface-600 dark:text-surface-400">
+		<p class="page-lead mb-8 sm:mb-10">
 			I specialize in creating dynamic web applications and embedded systems that deliver seamless
 			user experiences. With a passion for coding and problem-solving, I bring ideas to life through
 			innovative technology solutions.
 		</p>
-		<div class="flex flex-wrap justify-center gap-4">
-			<a
-				href="/work"
-				class="rounded-lg bg-primary-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-700"
-			>
+		<div
+			class="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
+		>
+			<a href="/work" class="burst-button min-h-11 rounded-lg px-6 py-3 font-semibold">
 				View My Work
 			</a>
-			<a
-				href="/contact"
-				class="rounded-lg border border-surface-300 px-6 py-3 font-semibold transition-colors hover:bg-surface-100 dark:border-surface-700 dark:hover:bg-surface-800"
-			>
+			<a href="/contact" class="outline-burst min-h-11 rounded-lg px-6 py-3 font-semibold">
 				Get in Touch
 			</a>
 		</div>
 	</div>
 </section>
 
-<section class="bg-white px-6 py-20 dark:bg-surface-800/50">
+<section class="section-burst px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 	<div class="mx-auto max-w-6xl">
-		<h2 class="mb-12 text-center text-3xl font-bold">What I Do</h2>
-		<div class="grid gap-8 md:grid-cols-3">
-			<div class="rounded-xl border border-surface-200 p-6 dark:border-surface-700">
-				<div
-					class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-900"
-				>
-					<svg
-						class="h-6 w-6 text-primary-600 dark:text-primary-400"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
+		<h2 class="section-title mb-10 text-center sm:mb-12">What I Do</h2>
+		<div class="motion-grid grid gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+			<div class="chromatic-panel motion-lift rounded-xl p-5 sm:p-6">
+				<div class="panel-icon mb-4">
+					<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -54,22 +44,15 @@
 						/>
 					</svg>
 				</div>
-				<h3 class="mb-2 text-xl font-semibold">Frontend Development</h3>
-				<p class="text-surface-600 dark:text-surface-400">
+				<h3 class="panel-accent mb-2 text-xl font-semibold">Frontend Development</h3>
+				<p class="section-copy">
 					Building responsive and interactive user interfaces with modern frameworks like Svelte,
 					React, and Vue.
 				</p>
 			</div>
-			<div class="rounded-xl border border-surface-200 p-6 dark:border-surface-700">
-				<div
-					class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-100 dark:bg-accent-900"
-				>
-					<svg
-						class="h-6 w-6 text-accent-600 dark:text-accent-400"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
+			<div class="chromatic-panel motion-lift rounded-xl p-5 sm:p-6">
+				<div class="panel-icon mb-4">
+					<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -78,22 +61,15 @@
 						/>
 					</svg>
 				</div>
-				<h3 class="mb-2 text-xl font-semibold">Backend Development</h3>
-				<p class="text-surface-600 dark:text-surface-400">
+				<h3 class="panel-accent mb-2 text-xl font-semibold">Backend Development</h3>
+				<p class="section-copy">
 					Creating robust APIs and server-side applications with Node.js, Python, and various
 					databases.
 				</p>
 			</div>
-			<div class="rounded-xl border border-surface-200 p-6 dark:border-surface-700">
-				<div
-					class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary-100 dark:bg-secondary-900"
-				>
-					<svg
-						class="h-6 w-6 text-secondary-600 dark:text-secondary-400"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
+			<div class="chromatic-panel motion-lift rounded-xl p-5 sm:p-6">
+				<div class="panel-icon mb-4">
+					<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -102,8 +78,8 @@
 						/>
 					</svg>
 				</div>
-				<h3 class="mb-2 text-xl font-semibold">Embedded</h3>
-				<p class="text-surface-600 dark:text-surface-400">
+				<h3 class="panel-accent mb-2 text-xl font-semibold">Embedded</h3>
+				<p class="section-copy">
 					Designing and programming embedded systems using C/C++ and microcontrollers for IoT
 					applications.
 				</p>
@@ -112,16 +88,16 @@
 	</div>
 </section>
 
-<section class="px-6 py-20">
-	<div class="mx-auto max-w-4xl text-center">
-		<h2 class="mb-6 text-3xl font-bold">Let's Work Together</h2>
-		<p class="mb-8 text-lg text-surface-600 dark:text-surface-400">
+<section class="section-burst px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+	<div class="page-intro page-intro--center motion-sequence mx-auto max-w-4xl">
+		<h2 class="section-title">Let's Work Together</h2>
+		<p class="page-lead mb-8">
 			Have a project in mind? I'd love to hear about it. Let's discuss how we can bring your ideas
 			to life.
 		</p>
 		<a
 			href="/contact"
-			class="inline-block rounded-lg bg-primary-600 px-8 py-4 font-semibold text-white transition-colors hover:bg-primary-700"
+			class="burst-button min-h-11 w-full rounded-lg px-8 py-4 font-semibold sm:w-auto"
 		>
 			Start a Conversation
 		</a>
