@@ -1,23 +1,29 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import PreferencePanel from '$lib/components/PreferencePanel.svelte';
+	import { initLocale, locale, localeInitScript } from '$lib/locale';
 	import { prefersReducedMotion } from '$lib/motion';
-	import { applySystemTheme, themeInitScript } from '$lib/theme';
+	import { siteCopy } from '$lib/site-copy';
+	import { initTheme, subscribeToSystemTheme, themeInitScript, themeMode } from '$lib/theme';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { quintOut } from 'svelte/easing';
+	import { fromStore } from 'svelte/store';
 	import { fade, fly } from 'svelte/transition';
 
 	let { children } = $props();
-
-	const navLinks = [
-		{ href: '/', label: 'Home' },
-		{ href: '/about', label: 'About' },
-		{ href: '/work', label: 'Work' },
-		{ href: '/contact', label: 'Contact' }
-	];
+	const localeState = fromStore(locale);
+	const themeModeState = fromStore(themeMode);
 
 	let mobileMenuOpen = $state(false);
+	let copy = $derived(siteCopy[localeState.current].layout);
+	let navLinks = $derived([
+		{ href: '/', label: copy.nav.home },
+		{ href: '/about', label: copy.nav.about },
+		{ href: '/work', label: copy.nav.work },
+		{ href: '/contact', label: copy.nav.contact }
+	]);
 
 	$effect(() => {
 		page.url.pathname;
@@ -25,32 +31,38 @@
 	});
 
 	onMount(() => {
-		applySystemTheme();
+		initTheme();
+		const cleanupTheme = subscribeToSystemTheme(() => {
+			if (themeModeState.current === 'system') {
+				initTheme();
+			}
+		});
+		const localeController = new AbortController();
 
-		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-		const handleThemeChange = () => applySystemTheme();
+		void initLocale(localeController.signal);
 
-		mediaQuery.addEventListener('change', handleThemeChange);
-
-		return () => mediaQuery.removeEventListener('change', handleThemeChange);
+		return () => {
+			localeController.abort();
+			cleanupTheme();
+		};
 	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	{@html `<script>${themeInitScript}</script>`}
-	<meta
-		name="description"
-		content="Thinh Nguyen is a full-stack and embedded developer building web products, systems, and technical experiments."
-	/>
+	{@html `<script>${localeInitScript}</script>`}
+	<meta name="description" content={copy.metaDescription} />
 </svelte:head>
+
+<a href="#main-content" class="skip-link">{copy.skipToContent}</a>
 
 <div class="site-frame theme-surface flex min-h-screen flex-col">
 	<header class="chromatic-header theme-border theme-surface sticky top-0 z-50 border-b">
 		<nav
 			class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
 		>
-			<a href="/" class="brand-spark text-lg font-bold tracking-tight sm:text-xl">Portfolio</a>
+			<a href="/" class="brand-spark text-lg font-bold tracking-tight sm:text-xl">{copy.brand}</a>
 
 			<div class="flex items-center gap-2 sm:gap-3">
 				<!-- Desktop Navigation -->
@@ -73,7 +85,7 @@
 					type="button"
 					class="theme-border theme-surface inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border p-2 md:hidden"
 					onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
-					aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+					aria-label={mobileMenuOpen ? copy.menu.close : copy.menu.open}
 					aria-expanded={mobileMenuOpen}
 					aria-controls="mobile-menu"
 				>
@@ -124,11 +136,14 @@
 						</li>
 					{/each}
 				</ul>
+				<div class="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+					<PreferencePanel mobile />
+				</div>
 			</div>
 		{/if}
 	</header>
 
-	<main class="site-canvas flex-1 overflow-x-clip">
+	<main id="main-content" class="site-canvas flex-1 overflow-x-clip" tabindex="-1">
 		{@render children()}
 	</main>
 
@@ -137,7 +152,7 @@
 			<div
 				class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left"
 			>
-				<p class="text-sm">&copy; {new Date().getFullYear()} Thinh Nguyen. All rights reserved.</p>
+				<p class="text-sm">&copy; {new Date().getFullYear()} Thinh Nguyen. {copy.footer.rights}</p>
 				<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:justify-end">
 					<a
 						href="https://github.com/thinisde"
@@ -156,15 +171,19 @@
 						LinkedIn
 					</a>
 					<a
-						href="https://x.com/CutieCat_6778"
+						href="https://beta.stackoverflow.com/users/12344712/thinh-nguyen"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="footer-link"
 					>
-						X / Twitter
+						Stack Overflow
 					</a>
 				</div>
 			</div>
 		</div>
 	</footer>
+
+	<div class="floating-controls hidden md:block">
+		<PreferencePanel />
+	</div>
 </div>
